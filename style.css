@@ -54,16 +54,13 @@ button:hover {
     background-color: #45a049;
 }
 .error {
+    border: 2px solid red !important;
+}
+.error-msg {
     color: red;
     font-size: 0.9em;
-}
-.errors {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 4px;
+    display: block;
+    margin-top: 5px;
 }
 .success {
     background-color: #d4edda;
