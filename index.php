@@ -90,18 +90,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors['contract'] = 'Необходимо ознакомиться с контрактом.';
     }
 
-    // Сохраняем значения полей в Cookies на год
-    $oneYear = time() + 365 * 24 * 60 * 60;
-    setcookie('value_fio', $fio, $oneYear, '/');
-    setcookie('value_phone', $phone, $oneYear, '/');
-    setcookie('value_email', $email, $oneYear, '/');
-    setcookie('value_birth_date', $birth_date, $oneYear, '/');
-    setcookie('value_gender', $gender, $oneYear, '/');
-    setcookie('value_languages', json_encode($languages), $oneYear, '/');
-    setcookie('value_biography', $biography, $oneYear, '/');
-    setcookie('value_contract', $contract, $oneYear, '/');
+    // Определяем срок хранения Cookies для значений полей
+    $cookieExpire = empty($errors) ? time() + 365 * 24 * 60 * 60 : time() + 5;
+    
+    setcookie('value_fio', $fio, $cookieExpire, '/');
+    setcookie('value_phone', $phone, $cookieExpire, '/');
+    setcookie('value_email', $email, $cookieExpire, '/');
+    setcookie('value_birth_date', $birth_date, $cookieExpire, '/');
+    setcookie('value_gender', $gender, $cookieExpire, '/');
+    setcookie('value_languages', json_encode($languages), $cookieExpire, '/');
+    setcookie('value_biography', $biography, $cookieExpire, '/');
+    setcookie('value_contract', $contract, $cookieExpire, '/');
 
     // Если есть ошибки – сохраняем их в Cookies и редиректим
+
     if (!empty($errors)) {
         foreach (array_keys($errors) as $field) {
             setcookie("error_$field", '1', 0, '/');
