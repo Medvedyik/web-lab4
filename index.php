@@ -91,8 +91,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Определяем срок хранения Cookies для значений полей
-    $cookieExpire = empty($errors) ? time() + 365 * 24 * 60 * 60 : time() + 5;
-    
+    $cookieExpire = empty($errors) ? time() + 365 * 24 * 60 * 60 : time() + 30 * 24 * 60 * 60;
+
     setcookie('value_fio', $fio, $cookieExpire, '/');
     setcookie('value_phone', $phone, $cookieExpire, '/');
     setcookie('value_email', $email, $cookieExpire, '/');
